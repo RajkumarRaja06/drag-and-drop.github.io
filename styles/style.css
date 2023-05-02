@@ -1,0 +1,235 @@
+/* select a font */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --clr-royal-blue: #4169e1;
+  --clr-red: #ff0000;
+  --clr-blue-violet: #8a2be2;
+  --clr-lime: #00ff00;
+  --clr-sky-blue: #8ecae6ff;
+  --clr-blue-green: #219ebcff;
+  --clr-prussian-blue: #023047ff;
+  --clr-selective-yellow: #ffb703ff;
+  --clr-ut-orange: #fb8500ff;
+  --ff-roboto: "Roboto", sans-serif;
+  --ff-noto-sans: "Noto Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  --max-width: 1170px;
+  --fixed-width: 450px;
+}
+
+/*  global classes */
+
+body {
+  width: 100vw;
+  height: 100%;
+  background-image: linear-gradient(#9c3bf7, #9754d6, #b681e8, #d3b6ee);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem auto;
+}
+
+.inProgressContainer,
+.doneContainer,
+.todoContainer {
+  width: 26rem;
+  min-height: 20rem;
+  overflow: visible;
+  background-color: #fff;
+  margin: 1.5rem auto;
+}
+
+.titleBox {
+  width: 100%;
+  height: 4rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00ff00;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.inputProjectBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputProjectName,
+.inputLang {
+  width: 90%;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.5rem auto;
+}
+
+.inputProjectName:focus,
+.inputLang:focus {
+  border-radius: 0.5rem;
+  box-shadow: var(--dark-shadow);
+}
+
+.btnSubmit {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #b681e8;
+  cursor: pointer;
+}
+
+.btnSubmit:hover {
+  background-color: #d8afff;
+}
+
+.btnAdd {
+  margin-top: 0.75rem;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.list li {
+  width: 80%;
+  height: 100%;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+  display: flex;
+}
+
+.list li.over .draggableBox {
+  background-color: var(--clr-red);
+}
+
+.itemNum {
+  width: 15%;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-lime);
+}
+
+.draggableBox {
+  width: 85%;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.projectName {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.projectLangs {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--clr-blue-green);
+  margin-bottom: 0.5rem;
+}
+
+.progressOutput,
+.doneOutput,
+.outputContainer {
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .mainContainer {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .inProgressContainer,
+  .doneContainer,
+  .todoContainer {
+    width: 25rem;
+    min-height: 41.5rem;
+    overflow: visible;
+    background-color: #fff;
+  }
+  .progressOutput,
+  .doneOutput,
+  .outputContainer {
+    background-color: #fff;
+  }
+}
+
+/*.list li.income {
+  border-right: 3px solid var(--clr-lime);
+}
+
+.list li.expense {
+  border-right: 3px solid var(--clr-red);
+} 
+
+
+.btnDelete {
+  cursor: pointer;
+  border: 0;
+  font-size: 1.2rem;
+  position: absolute;
+  background-color: var(--clr-red);
+  top: 50%;
+  left: 0;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 12px 7px;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.list li:hover .btnDelete {
+  opacity: 1;
+} */
