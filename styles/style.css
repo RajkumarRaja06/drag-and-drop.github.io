@@ -38,6 +38,7 @@ body {
   width: 100vw;
   height: 100%;
   background-image: linear-gradient(#9c3bf7, #9754d6, #b681e8, #d3b6ee);
+  background-size: cover;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   overflow: visible;
   display: flex;
@@ -47,7 +48,7 @@ body {
 .mainContainer {
   display: flex;
   flex-direction: column;
-  margin: 1.5rem auto;
+  gap: 2rem;
 }
 
 .inProgressContainer,
@@ -56,8 +57,9 @@ body {
   width: 26rem;
   min-height: 20rem;
   overflow: visible;
-  background-color: #fff;
+  background-color: lightgray;
   margin: 1.5rem auto;
+  border-radius: 1.5rem;
 }
 
 .titleBox {
@@ -67,7 +69,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00ff00;
+  background-color: #fff;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
 .form {
@@ -119,6 +123,7 @@ body {
 
 .list {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,10 +177,44 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.progressOutput,
 .doneOutput,
-.outputContainer {
-  margin-bottom: 2rem;
+.progressOutput {
+  width: 100wh;
+  height: 100%;
+}
+
+.output {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.output li {
+  width: 80%;
+  border: 1px solid black;
+  margin: 0.5rem auto;
+}
+
+.output li .itemNum {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-lime);
+}
+
+.output li .draggableBox {
+  width: 100%;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  justify-content: center;
+  padding: 0.5rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -184,52 +223,40 @@ body {
     height: 100%;
     display: block;
   }
+
   .mainContainer {
     margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
   }
+
   .inProgressContainer,
   .doneContainer,
   .todoContainer {
     width: 25rem;
     min-height: 41.5rem;
     overflow: visible;
-    background-color: #fff;
   }
+
   .progressOutput,
   .doneOutput,
   .outputContainer {
-    background-color: #fff;
+    background-color: lightgray;
+    border-radius: 1.5rem;
+  }
+
+  .doneOutput,
+  .progressOutput {
+    width: 100wh;
+    height: 95%;
+  }
+
+  .output {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0rem;
   }
 }
-
-/*.list li.income {
-  border-right: 3px solid var(--clr-lime);
-}
-
-.list li.expense {
-  border-right: 3px solid var(--clr-red);
-} 
-
-
-.btnDelete {
-  cursor: pointer;
-  border: 0;
-  font-size: 1.2rem;
-  position: absolute;
-  background-color: var(--clr-red);
-  top: 50%;
-  left: 0;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  padding: 12px 7px;
-  transform: translate(-100%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.list li:hover .btnDelete {
-  opacity: 1;
-} */
