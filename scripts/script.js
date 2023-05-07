@@ -4,11 +4,9 @@ const projectNameEl = document.getElementById("inputProjectName");
 const projectLangsEL = document.getElementById("inputLang");
 const formEL = document.getElementById("form");
 const listEl = document.getElementById("list");
+const ulOutput = document.querySelectorAll(".output");
 
-//global variable
-// let listItems = localStorage.getItem("ListItems");
-// listItems = listItems ? JSON.parse(listItems) : [];
-let startIndexValue = 0;
+let dragItem = null;
 
 const items = [];
 
@@ -68,9 +66,6 @@ const data = [
 
 const init = () => {
   listEl.innerHTML = null;
-  // data.forEach((item) => {
-  //   items.push(item);
-  // });
   createList();
 };
 
@@ -101,62 +96,56 @@ const createList = () => {
     const liEl = document.createElement("li");
     liEl.innerHTML = `
       <span class="itemNum">${index + 1}</span>
-      <div class="draggableBox" draggable="true">
+      <div class="draggableBox">
         <h1 class="projectName">${item.name}</h1>
         <p class="projectLangs">⦾${item.language}</p>
       </div>`;
+    liEl.setAttribute("draggable", true);
     liEl.setAttribute("dataIndex", index);
     listEl.appendChild(liEl);
   });
-  console.log(data);
-  console.log(Array.isArray(data));
-  console.log(Array.isArray(listEl));
-
   dragAndDrop();
 };
 
-function dragStart() {
-  startIndexValue = +this.closest("li").getAttribute("dataIndex");
+const dragAndDrop = () => {
+  const listItems = document.querySelectorAll(".list li");
+
+  listItems.forEach((item) => {
+    item.addEventListener("dragstart", dragStart);
+    item.addEventListener("dragend", dragEnd);
+  });
+  ulOutput.forEach((item) => {
+    item.addEventListener("dragover", dragOver);
+    item.addEventListener("dragenter", dragEnter);
+    item.addEventListener("dragleave", dragLeave);
+    item.addEventListener("drop", dragDrop);
+  });
+};
+
+function dragStart(e) {
+  dragItem = this;
+  setTimeout(() => (this.style.display = "none"), 0);
 }
 
-function dragDrop() {
-  const lastIndexValue = +this.getAttribute("dataIndex");
-  swapItem(startIndexValue, lastIndexValue);
+function dragEnd() {
+  setTimeout(() => (this.style.display = "flex"), 0);
+  dragItem = null;
 }
 
 function dragOver(e) {
   e.preventDefault();
 }
 
-function dragEnter() {
-  this.classList.add("over");
+function dragEnter(e) {
+  e.preventDefault();
 }
 
-function dragLeave() {
-  this.classList.remove("over");
+function dragLeave() {}
+
+function dragDrop() {
+  console.log(this);
+  this.appendChild(dragItem);
 }
 
-const dragAndDrop = () => {
-  const listItems = document.querySelectorAll(".draggableBox");
-  const draggableItems = document.querySelectorAll(".list li");
-
-  listItems.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-  });
-
-  draggableItems.forEach((item) => {
-    item.addEventListener("dragover", dragOver);
-    item.addEventListener("drop", dragDrop);
-    item.addEventListener("dragenter", dragEnter);
-    item.addEventListener("dragleave", dragLeave);
-  });
-};
-
-function swapItem(fromIndex, toIndex) {
-  console.log(listEl[fromIndex]);
-  console.log(listEl[toIndex]);
-  console.log(Array.isArray(listEl));
-  console.log(Array.isArray(items));
-}
-//
+//initial setting
 init();
